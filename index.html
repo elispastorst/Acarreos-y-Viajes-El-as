@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acarreos y Viajes Elías</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* MENÚ */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #003366;
+      padding: 15px;
+      z-index: 1000;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a.active, nav a:hover {
+      color: #fdd835;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 100px 40px 40px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* PORTADA */
+    .portada {
+      background: url('https://res.cloudinary.com/demo/image/upload/w_1200,h_800,c_fill/chevrolet_truck.jpg') no-repeat center center/cover;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    /* BIENVENIDA CON FLEXBOX */
+    .mvv {
+      max-width: 1100px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+    .mvv div {
+      flex: 1;
+      min-width: 280px;
+    }
+    .mvv h3 {
+      margin-top: 15px;
+      color: #003366;
+    }
+
+    /* LISTA */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 8px 0;
+      font-size: 18px;
+    }
+
+    /* BOTONES CONTACTO */
+    .btns-contacto {
+      margin-top: 20px;
+    }
+    .btns-contacto a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+      transition: 0.3s;
+    }
+    .whatsapp {
+      background: #25D366;
+    }
+    .llamada {
+      background: #007bff;
+    }
+    .btns-contacto a:hover {
+      opacity: 0.8;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    footer a {
+      color: #fdd835;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MENÚ -->
+  <nav>
+    <a href="#portada" class="active">Inicio</a>
+    <a href="#qr">QR</a>
+    <a href="#bienvenida">Bienvenida</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#versiculo">Versículo</a>
+  </nav>
+
+  <!-- PORTADA -->
+  <section id="portada" class="portada">
+    <h1>Acarreos y Viajes Elías</h1>
+    <p>Soluciones rápidas, seguras y confiables en transporte de carga</p>
+  </section>
+
+  <!-- QR -->
+  <section id="qr" class="qr">
+    <h2>Escanea nuestro código QR</h2>
+    <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758086596/codigo_QR_png_bo1xhr.png" alt="QR Acarreos Elías" width="200">
+  </section>
+
+  <!-- BIENVENIDA -->
+  <section id="bienvenida" class="mvv">
+    <div>
+      <h2>Bienvenidos</h2>
+      <p>En <strong>Acarreos y Viajes Elías</strong> trabajamos con compromiso y responsabilidad para ofrecer el mejor servicio de transporte y mudanzas.</p>
+      <h3>Misión</h3>
+      <p>Brindar un servicio confiable y seguro en acarreos y viajes, garantizando puntualidad, cuidado de la carga y atención personalizada a nuestros clientes.</p>
+      <h3>Visión</h3>
+      <p>Ser la empresa líder en servicios de transporte y mudanzas a nivel regional, reconocida por la calidad, la confianza y la innovación en nuestras soluciones logísticas.</p>
+    </div>
+    <div>
+      <h3>Valores</h3>
+      <ul>
+        <li>✅ Responsabilidad</li>
+        <li>✅ Honestidad</li>
+        <li>✅ Puntualidad</li>
+        <li>✅ Compromiso con el cliente</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2>Contáctanos</h2>
+    <p>📞 Teléfonos: <strong>3204329435 - 3106277897</strong></p>
+    <p>📍 Servicio en toda la región</p>
+    <div class="btns-contacto">
+      <a href="https://wa.me/573204329435" class="whatsapp">WhatsApp</a>
+      <a href="tel:+573106277897" class="llamada">Llamar</a>
+    </div>
+  </section>
+
+  <!-- VERSÍCULO FINAL -->
+  <section id="versiculo">
+    <h2>Palabra de Bendición</h2>
+    <p><em>"Encomienda al Señor tu camino; confía en él, y él actuará.  
+    Hará que tu justicia resplandezca como el alba; tu justa causa, como el sol de mediodía."  
+    Salmo 37:5-6</em></p>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>© 2025 Acarreos y Viajes Elías - Todos los derechos reservados | Diseño Digital por <a href="#">EBS Diseños</a></p>
+  </footer>
+
+  <!-- JS PARA MENÚ ACTIVO -->
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 60;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach(a => {
+        a.classList.remove("active");
+        if (a.getAttribute("href") === "#" + current) {
+          a.classList.add("active");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
