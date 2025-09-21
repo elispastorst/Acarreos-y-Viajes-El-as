@@ -1,284 +1,219 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Acarreos y Viajes Elías — Tarjeta Digital</title>
-
-  <!-- Tailwind (rápido para prototipos) + Font Awesome -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-
-  <meta name="description" content="Acarreos y Viajes Elías — transporte y mudanzas. Contacto por WhatsApp y teléfono. Tarjeta digital con QR." />
-
-  <style>
-    /* Pequeños ajustes personalizados */
-    body {font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
-
-    /* header full-screen banner */
-    header.hero {height: 70vh; min-height:420px; position:relative; overflow:hidden;}
-    header.hero img.bg {width:100%; height:100%; object-fit:cover; display:block;}
-    header .overlay {position:absolute; inset:0; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; text-align:center; padding:1.5rem;}
-
-    /* Mobile menu */
-    .mobile-menu {display:none;}
-    @media (max-width: 768px) {
-      .mobile-menu{display:flex;}
-      nav.desktop{display:none;}
-    }
-
-    /* Floating action buttons */
-    .fab {position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:12px; z-index:1000;}
-    .fab a {width:52px; height:52px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:white; box-shadow:0 6px 18px rgba(0,0,0,0.18); text-decoration:none;}
-    .fab .wh { background:#25d366; }
-    .fab .call { background:#0b84ff; }
-
-    /* Small responsive tweaks for QR image */
-    .qr-img {width:260px; max-width:46vw; height:auto; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08);}
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Acarreos y Viajes Elías — Tarjeta Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <meta name="description" content="Acarreos y Viajes Elías — transporte y mudanzas. Contacto por WhatsApp y teléfono. Tarjeta digital con QR." />
+    <style>
+        body {font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+        header.hero {height: 70vh; min-height:420px; position:relative; overflow:hidden;}
+        header.hero img.bg {width:100%; height:100%; object-fit:cover; display:block;}
+        header .overlay {position:absolute; inset:0; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; text-align:center; padding:1.5rem;}
+        .mobile-menu {display:none;}
+        @media (max-width: 768px) {
+            .mobile-menu{display:flex;}
+            nav.desktop{display:none;}
+        }
+        .fab {position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:12px; z-index:1000;}
+        .fab a {width:52px; height:52px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:white; box-shadow:0 6px 18px rgba(0,0,0,0.18); text-decoration:none;}
+        .fab .wh { background:#25d366; }
+        .fab .call { background:#0b84ff; }
+        .qr-img {width:260px; max-width:46vw; height:auto; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- ========== NAV / HEADER ========== -->
-  <header class="bg-transparent">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <!-- Si tienes logo, reemplaza la src -->
-        <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758402601/g19_jldj6k.png" alt="Acarreos y Viajes Elías - logo" class="h-12 w-12 rounded-md object-cover shadow-sm">
-        <div>
-          <div class="text-white font-bold text-lg">Acarreos y Viajes Elías</div>
-          <div class="text-xs text-gray-200">Transporte y mudanzas - Valencia, Venezuela</div>
+    <header class="bg-transparent">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758428511/ave-logo-png_seeklogo-14303_i1y8rp.png" alt="Acarreos y Viajes Elías - logo" class="h-12 w-12 rounded-md object-cover shadow-sm">
+                <div>
+                    <div class="text-white font-bold text-lg">Acarreos y Viajes Elías</div>
+                    <div class="text-xs text-gray-200">Transporte y mudanzas - Valencia, Venezuela</div>
+                </div>
+            </div>
+            <nav class="desktop space-x-6 text-white font-medium">
+                <a href="#inicio" class="hover:text-yellow-300">Inicio</a>
+                <a href="#servicios" class="hover:text-yellow-300">Servicios</a>
+                <a href="#escaner" class="hover:text-yellow-300">Escanéame</a>
+                <a href="#ganar-ingresos" class="hover:text-yellow-300">Ganar Ingresos</a>
+                <a href="#contacto" class="hover:text-yellow-300">Contacto</a>
+            </nav>
+            <button id="menuBtn" class="md:hidden text-white px-2 py-2 rounded" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
-      </div>
+        <div id="mobileMenu" class="mobile-menu bg-gray-900 text-white p-4 hidden">
+            <a href="#inicio" class="block py-2 px-2 rounded hover:bg-gray-800">Inicio</a>
+            <a href="#servicios" class="block py-2 px-2 rounded hover:bg-gray-800">Servicios</a>
+            <a href="#escaner" class="block py-2 px-2 rounded hover:bg-gray-800">Escanéame</a>
+            <a href="#ganar-ingresos" class="block py-2 px-2 rounded hover:bg-gray-800">Ganar Ingresos</a>
+            <a href="#contacto" class="block py-2 px-2 rounded hover:bg-gray-800">Contacto</a>
+        </div>
+    </header>
 
-      <!-- Desktop nav -->
-      <nav class="desktop space-x-6 text-white font-medium">
-        <a href="#inicio" class="hover:text-yellow-300">Inicio</a>
-        <a href="#servicios" class="hover:text-yellow-300">Servicios</a>
-        <a href="#escaner" class="hover:text-yellow-300">Escanéame</a>
-        <a href="#ganar-ingresos" class="hover:text-yellow-300">Ganar Ingresos</a>
-        <a href="#contacto" class="hover:text-yellow-300">Contacto</a>
-      </nav>
+    <header class="hero mt-0">
+        <img class="bg" src="https://res.cloudinary.com/dysydffc7/image/upload/v1758402601/g19_jldj6k.png" alt="Acarreos y Viajes Elías - Banner del camión">
+        <div class="overlay">
+            <div class="max-w-4xl px-6">
+                <h1 class="text-3xl md:text-5xl font-extrabold text-white">Acarreos y Viajes Elías</h1>
+                <p class="mt-3 text-white/90 text-base md:text-xl max-w-2xl mx-auto">
+                    Transporte confiable, rápido y seguro para mudanzas y acarreos. Atención personalizada y precios competitivos.
+                </p>
+                <div class="mt-6 flex flex-wrap justify-center gap-3">
+                    <a href="https://wa.me/573204329435" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-full font-semibold shadow hover:bg-green-600">
+                        📲 WhatsApp
+                    </a>
+                    <a href="tel:+573204329435" class="bg-white text-gray-900 px-5 py-3 rounded-full font-semibold shadow hover:bg-gray-100">
+                        📞 Llamar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-      <!-- Mobile menu button -->
-      <button id="menuBtn" class="md:hidden text-white px-2 py-2 rounded" aria-label="Abrir menú">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <section id="inicio" class="mb-8">
+            <div class="bg-white p-6 rounded-xl shadow">
+                <h2 class="text-2xl font-bold text-gray-800">Bienvenido a Acarreos y Viajes Elías</h2>
+                <p class="mt-2 text-gray-600">Ofrecemos servicios de transporte y mudanzas con atención profesional y vehículos adecuados para tus necesidades.</p>
+            </div>
+        </section>
+        <section id="servicios" class="mb-8">
+            <div class="bg-white p-6 rounded-xl shadow">
+                <h3 class="text-xl font-bold mb-4">Nuestros Servicios</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 border rounded">
+                        <h4 class="font-semibold">Acarreos Locales</h4>
+                        <p class="text-sm text-gray-600">Traslado de muebles, enseres y mercancía pequeña dentro de la ciudad.</p>
+                    </div>
+                    <div class="p-4 border rounded">
+                        <h4 class="font-semibold">Mudanzas</h4>
+                        <p class="text-sm text-gray-600">Mudanzas residenciales y comerciales con embalaje y transporte seguro.</p>
+                    </div>
+                    <div class="p-4 border rounded">
+                        <h4 class="font-semibold">Viajes y Carga</h4>
+                        <p class="text-sm text-gray-600">Rutas intermunicipales, transporte de carga y acarreos especiales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="escaner" class="mb-8">
+            <div class="bg-white p-6 rounded-xl shadow text-center">
+                <h3 class="text-xl font-bold mb-4">Escanéame</h3>
+                <p class="text-gray-600 mb-4">Escanea el QR para abrir la tarjeta digital completa.</p>
+                <a id="qrAnchor" href="https://TU_SITE_NETLIFY_OR_GITHUB_PAGES/" target="_blank" rel="noopener">
+                    <img id="qrImg" class="qr-img" src="https://res.cloudinary.com/dysydffc7/image/upload/v1758133407/qrcode_3_nktmcs.png"
+                         alt="QR Acarreos y Viajes Elías (escanea para abrir)"
+                         title="Escanea para abrir la tarjeta digital">
+                </a>
+                <p class="mt-3 text-sm text-gray-500">Si aún no tienes la URL final, reemplaza <code>https://TU_SITE_NETLIFY_OR_GITHUB_PAGES/</code> en el código por la URL que Netlify te entregue.</p>
+            </div>
+        </section>
+        <section id="ganar-ingresos" class="mb-8">
+            <div class="bg-white p-6 rounded-xl shadow text-center">
+                <h3 class="text-xl font-bold mb-4">Generador de Ingresos</h3>
+                <p class="text-gray-600 mb-4">Si te interesa generar ingresos adicionales, puedes registrarte en Emprende World.</p>
+                <div class="flex flex-col items-center gap-4">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://www.emprendeworld.com/websignup?ref=16951247" alt="QR Emprende World" class="qr-img" style="width:160px;">
+                    <a href="https://www.emprendeworld.com/websignup?ref=16951247" target="_blank" class="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700">
+                        🔗 Registro en Emprende World
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="mvv" class="mb-8">
+            <div class="bg-white p-6 rounded-xl shadow">
+                <h3 class="text-xl font-bold mb-4">Misión · Visión · Valores</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <h4 class="font-semibold">Misión</h4>
+                        <p class="text-sm text-gray-600">Brindar servicios de transporte y mudanzas seguros y puntuales, cuidando tus bienes como si fueran nuestros.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">Visión</h4>
+                        <p class="text-sm text-gray-600">Ser la compañía de referencia en la región por calidad y confianza en servicios de acarreos y viajes.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">Valores</h4>
+                        <p class="text-sm text-gray-600">Responsabilidad · Puntualidad · Honestidad · Trato cercano al cliente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contacto" class="mb-12">
+            <div class="bg-white p-6 rounded-xl shadow text-center">
+                <h3 class="text-xl font-bold mb-3">Contáctanos</h3>
+                <p class="text-gray-700 mb-2">Teléfonos: <strong>320 432 9435</strong> — <strong>310 627 77897</strong></p>
+                <p class="text-gray-600 mb-4">Valencia — Edo. Carabobo — Venezuela</p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <a href="https://wa.me/573204329435" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-green-600">
+                        WhatsApp 3204329435
+                    </a>
+                    <a href="https://wa.me/5731062777897" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-green-600">
+                        WhatsApp 31062777897
+                    </a>
+                    <a href="tel:+573204329435" class="bg-blue-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-blue-700">
+                        Llamar 3204329435
+                    </a>
+                    <a href="tel:+5731062777897" class="bg-blue-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-blue-700">
+                        Llamar 31062777897
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="versiculo" class="mb-12">
+            <div class="bg-white p-6 rounded-xl shadow text-center">
+                <h3 class="text-xl font-bold mb-3">Mensaje Final</h3>
+                <p class="text-gray-700 italic">"Jehová guardará tu salida y tu entrada desde ahora y para siempre." — Salmo 121:8</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-100 py-6">
+        <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+            &copy; 2025 Acarreos y Viajes Elías — Todos los derechos reservados.
+            <br>
+            Diseño: <a href="https://wa.link/93unkg" target="_blank" class="text-yellow-300 underline">EBS Making</a>
+        </div>
+    </footer>
+
+    <div class="fab">
+        <a class="wh" href="https://wa.me/573204329435" target="_blank" title="WhatsApp 3204329435"><i class="fa-brands fa-whatsapp"></i></a>
+        <a class="call" href="tel:+573204329435" title="Llamar 3204329435"><i class="fa-solid fa-phone"></i></a>
     </div>
 
-    <!-- Mobile menu (hidden by default) -->
-    <div id="mobileMenu" class="mobile-menu bg-gray-900 text-white p-4 hidden">
-      <a href="#inicio" class="block py-2 px-2 rounded hover:bg-gray-800">Inicio</a>
-      <a href="#servicios" class="block py-2 px-2 rounded hover:bg-gray-800">Servicios</a>
-      <a href="#escaner" class="block py-2 px-2 rounded hover:bg-gray-800">Escanéame</a>
-      <a href="#ganar-ingresos" class="block py-2 px-2 rounded hover:bg-gray-800">Ganar Ingresos</a>
-      <a href="#contacto" class="block py-2 px-2 rounded hover:bg-gray-800">Contacto</a>
-    </div>
-  </header>
-
-  <!-- ========== BANNER PRINCIPAL ========== -->
-  <header class="hero mt-0">
-    <img class="bg" src="https://res.cloudinary.com/dysydffc7/image/upload/v1758402601/g19_jldj6k.png" alt="Acarreos y Viajes Elías - Banner">
-    <div class="overlay">
-      <div class="max-w-4xl px-6">
-        <h1 class="text-3xl md:text-5xl font-extrabold text-white">Acarreos y Viajes Elías</h1>
-        <p class="mt-3 text-white/90 text-base md:text-xl max-w-2xl mx-auto">
-          Transporte confiable, rápido y seguro para mudanzas y acarreos. Atención personalizada y precios competitivos.
-        </p>
-
-        <div class="mt-6 flex flex-wrap justify-center gap-3">
-          <!-- Botón WhatsApp (cliente: primer número) -->
-          <a href="https://wa.me/573204329435" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-full font-semibold shadow hover:bg-green-600">
-            📲 WhatsApp
-          </a>
-
-          <!-- Botón Llamada (cliente: primer número) -->
-          <a href="tel:+573204329435" class="bg-white text-gray-900 px-5 py-3 rounded-full font-semibold shadow hover:bg-gray-100">
-            📞 Llamar
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ========== CONTENIDO PRINCIPAL ========== -->
-  <main class="max-w-6xl mx-auto px-4 py-8">
-
-    <!-- Inicio (breve) -->
-    <section id="inicio" class="mb-8">
-      <div class="bg-white p-6 rounded-xl shadow">
-        <h2 class="text-2xl font-bold text-gray-800">Bienvenido a Acarreos y Viajes Elías</h2>
-        <p class="mt-2 text-gray-600">Ofrecemos servicios de transporte y mudanzas con atención profesional y vehículos adecuados para tus necesidades.</p>
-      </div>
-    </section>
-
-    <!-- Servicios -->
-    <section id="servicios" class="mb-8">
-      <div class="bg-white p-6 rounded-xl shadow">
-        <h3 class="text-xl font-bold mb-4">Nuestros Servicios</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="p-4 border rounded">
-            <h4 class="font-semibold">Acarreos Locales</h4>
-            <p class="text-sm text-gray-600">Traslado de muebles, enseres y mercancía pequeña dentro de la ciudad.</p>
-          </div>
-          <div class="p-4 border rounded">
-            <h4 class="font-semibold">Mudanzas</h4>
-            <p class="text-sm text-gray-600">Mudanzas residenciales y comerciales con embalaje y transporte seguro.</p>
-          </div>
-          <div class="p-4 border rounded">
-            <h4 class="font-semibold">Viajes y Carga</h4>
-            <p class="text-sm text-gray-600">Rutas intermunicipales, transporte de carga y acarreos especiales.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Escanéame (QR) - sección exclusiva -->
-    <section id="escaner" class="mb-8">
-      <div class="bg-white p-6 rounded-xl shadow text-center">
-        <h3 class="text-xl font-bold mb-4">Escanéame</h3>
-        <p class="text-gray-600 mb-4">Escanea el QR para abrir la tarjeta digital completa.</p>
-
-        <!-- ===== IMPORTANT: REPLACE the URL below (https://TU_SITE_NETLIFY_OR_GITHUB_PAGES/) with the final Netlify/GitHub Pages URL of the site.
-             Example: https://acarreos-elias.netlify.app/
-             The IMG src points to the QR image you uploaded to Cloudinary (ok to keep as preview).
-        -->
-        <a id="qrAnchor" href="https://TU_SITE_NETLIFY_OR_GITHUB_PAGES/" target="_blank" rel="noopener">
-          <img id="qrImg" class="qr-img" src="https://res.cloudinary.com/dysydffc7/image/upload/v1758133407/qrcode_3_nktmcs.png"
-               alt="QR Acarreos y Viajes Elías (escanea para abrir)"
-               title="Escanea para abrir la tarjeta digital">
-        </a>
-
-        <p class="mt-3 text-sm text-gray-500">Si aún no tienes la URL final, reemplaza <code>https://TU_SITE_NETLIFY_OR_GITHUB_PAGES/</code> en el código por la URL que Netlify te entregue.</p>
-      </div>
-    </section>
-
-    <!-- Ganar Ingresos (Emprende World) -->
-    <section id="ganar-ingresos" class="mb-8">
-      <div class="bg-white p-6 rounded-xl shadow text-center">
-        <h3 class="text-xl font-bold mb-4">Generador de Ingresos</h3>
-        <p class="text-gray-600 mb-4">Si te interesa generar ingresos adicionales, puedes registrarte en Emprende World.</p>
-
-        <!-- QR y botón para Emprende World (usa tu ref o cambia el link si quieres otro) -->
-        <div class="flex flex-col items-center gap-4">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://www.emprendeworld.com/websignup?ref=16951247" alt="QR Emprende World" class="qr-img" style="width:160px;">
-          <a href="https://www.emprendeworld.com/websignup?ref=16951247" target="_blank" class="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700">
-            🔗 Registro en Emprende World
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Misión / Visión / Valores -->
-    <section id="mvv" class="mb-8">
-      <div class="bg-white p-6 rounded-xl shadow">
-        <h3 class="text-xl font-bold mb-4">Misión · Visión · Valores</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <h4 class="font-semibold">Misión</h4>
-            <p class="text-sm text-gray-600">Brindar servicios de transporte y mudanzas seguros y puntuales, cuidando tus bienes como si fueran nuestros.</p>
-          </div>
-          <div>
-            <h4 class="font-semibold">Visión</h4>
-            <p class="text-sm text-gray-600">Ser la compañía de referencia en la región por calidad y confianza en servicios de acarreos y viajes.</p>
-          </div>
-          <div>
-            <h4 class="font-semibold">Valores</h4>
-            <p class="text-sm text-gray-600">Responsabilidad · Puntualidad · Honestidad · Trato Amable y Cordial.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="mb-12">
-      <div class="bg-white p-6 rounded-xl shadow text-center">
-        <h3 class="text-xl font-bold mb-3">Contáctanos</h3>
-        <p class="text-gray-700 mb-2">Celulares: <strong>320 432 9435</strong> — <strong>310 627 77897</strong></p>
-        <p class="text-gray-600 mb-4">Cúcuta - Colombia</p>
-
-        <div class="flex flex-wrap justify-center gap-3">
-          <a href="https://wa.me/573204329435" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-green-600">
-            WhatsApp 3204329435
-          </a>
-          <a href="https://wa.me/5731062777897" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-green-600">
-            WhatsApp 31062777897
-          </a>
-          <a href="tel:+573204329435" class="bg-blue-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-blue-700">
-            Llamar 3204329435
-          </a>
-          <a href="tel:+5731062777897" class="bg-blue-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-blue-700">
-            Llamar 31062777897
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Versículo / Página final -->
-    <section id="versiculo" class="mb-12">
-      <div class="bg-white p-6 rounded-xl shadow text-center">
-        <h3 class="text-xl font-bold mb-3">Mensaje Final</h3>
-        <p class="text-gray-700 italic">"Jehová guardará tu salida y tu entrada desde ahora y para siempre." — Salmo 121:8</p>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ========== FOOTER ========== -->
-  <footer class="bg-gray-900 text-gray-100 py-6">
-    <div class="max-w-6xl mx-auto px-4 text-center text-sm">
-      &copy; 2025 Acarreos y Viajes Elías — Todos los derechos reservados.
-      <br>
-      Diseño: <a href="https://wa.link/93unkg" target="_blank" class="text-yellow-300 underline">EBS Making</a>
-    </div>
-  </footer>
-
-  <!-- ========== FLOTANTES (WhatsApp + Llamada) ========== -->
-  <div class="fab">
-    <a class="wh" href="https://wa.me/573204329435" target="_blank" title="WhatsApp 3204329435"><i class="fa-brands fa-whatsapp"></i></a>
-    <a class="call" href="tel:+573204329435" title="Llamar 3204329435"><i class="fa-solid fa-phone"></i></a>
-  </div>
-
-  <!-- ========== SCRIPTS ========== -->
-  <script>
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => {
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
-      } else {
-        mobileMenu.classList.add('hidden');
-      }
-    });
-
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function(e){
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({behavior:'smooth', block:'start'});
-          if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e){
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({behavior:'smooth', block:'start'});
+                    if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        function setQrDestination(url){
+            const anchor = document.getElementById('qrAnchor');
+            const img = document.getElementById('qrImg');
+            if(!anchor || !img) return;
+            anchor.href = url;
+            const encoded = encodeURIComponent(url);
+            img.src = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encoded}`;
         }
-      });
-    });
-
-    // Helper: set the QR destination dynamically (useful si quieres hacerlo sin editar el HTML)
-    // Ej: setQrDestination('https://acarreos-elias.netlify.app/');
-    function setQrDestination(url){
-      const anchor = document.getElementById('qrAnchor');
-      const img = document.getElementById('qrImg');
-      if(!anchor || !img) return;
-      anchor.href = url;
-      // también puedes regenerar la imagen desde api.qrserver si quieres descargarla después:
-      const encoded = encodeURIComponent(url);
-      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encoded}`;
-    }
-
-    // Si quieres, en la consola del navegador ejecuta:
-    // setQrDestination('https://TU_SITE_NETLIFY_OR_GITHUB_PAGES/');
-    // y luego guarda la imagen (clic derecho → guardar) para subir a Cloudinary.
-  </script>
+    </script>
 </body>
 </html>
