@@ -9,14 +9,65 @@
     <meta name="description" content="Acarreos y Viajes Elías — transporte y mudanzas. Contacto por WhatsApp y teléfono. Tarjeta digital con QR." />
     <style>
         body {font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
-        header.hero {height: 70vh; min-height:420px; position:relative; overflow:hidden;}
-        header.hero img.bg {width:100%; height:100%; object-fit:cover; display:block;}
-        header .overlay {position:absolute; inset:0; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; text-align:center; padding:1.5rem;}
-        .mobile-menu {display:none;}
+        
+        header.hero {
+            height: 70vh; 
+            min-height:420px; 
+            position:relative; 
+            overflow:hidden;
+            background-image: url('https://res.cloudinary.com/dysydffc7/image/upload/v1716174175/camioneta_acarreos_elias_r6y4yv.png'); /* CAMIONETA EN EL FONDO */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        header.hero .overlay {
+            position:absolute; 
+            inset:0; 
+            background:rgba(0,0,0,0.45); 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            text-align:center; 
+            padding:1.5rem;
+            z-index: 10;
+        }
+        
+        header.hero .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            padding: 1rem;
+            max-width: 6xl;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-menu {
+            display:none;
+            position: absolute;
+            top: 72px;
+            left: 0;
+            right: 0;
+            z-index: 15;
+            background:rgba(0,0,0,0.85);
+            width: 100%;
+            flex-direction: column;
+            padding-bottom: 1rem;
+        }
+
         @media (max-width: 768px) {
-            .mobile-menu{display:flex;}
             nav.desktop{display:none;}
         }
+
         .fab {position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:12px; z-index:1000;}
         .fab a {width:52px; height:52px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:white; box-shadow:0 6px 18px rgba(0,0,0,0.18); text-decoration:none;}
         .fab .wh { background:#25d366; }
@@ -26,10 +77,10 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <header class="bg-transparent">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <header class="hero">
+        <div class="top-nav px-4 py-4">
             <div class="flex items-center gap-3">
-                <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758402601/g19_jldj6k.png" alt="Acarreos y Viajes Elías - logo" class="h-12 w-12 rounded-md object-cover shadow-sm">
+                <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758402601/g19_jldj6k.png" alt="Acarreos y Viajes Elías - logo AVE" class="h-12 w-12 rounded-md object-cover shadow-sm">
                 <div>
                     <div class="text-white font-bold text-lg">Acarreos y Viajes Elías</div>
                     <div class="text-xs text-gray-200">Transporte y mudanzas - Cúcuta, Colombia</div>
@@ -46,17 +97,15 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-        <div id="mobileMenu" class="mobile-menu bg-gray-900 text-white p-4 hidden">
-            <a href="#inicio" class="block py-2 px-2 rounded hover:bg-gray-800">Inicio</a>
-            <a href="#servicios" class="block py-2 px-2 rounded hover:bg-gray-800">Servicios</a>
-            <a href="#escaner" class="block py-2 px-2 rounded hover:bg-gray-800">Escanéame</a>
-            <a href="#ganar-ingresos" class="block py-2 px-2 rounded hover:bg-gray-800">Ganar Ingresos</a>
-            <a href="#contacto" class="block py-2 px-2 rounded hover:bg-gray-800">Contacto</a>
+        
+        <div id="mobileMenu" class="mobile-menu hidden">
+            <a href="#inicio" class="block py-2 px-4 rounded hover:bg-gray-700">Inicio</a>
+            <a href="#servicios" class="block py-2 px-4 rounded hover:bg-gray-700">Servicios</a>
+            <a href="#escaner" class="block py-2 px-4 rounded hover:bg-gray-700">Escanéame</a>
+            <a href="#ganar-ingresos" class="block py-2 px-4 rounded hover:bg-gray-700">Ganar Ingresos</a>
+            <a href="#contacto" class="block py-2 px-4 rounded hover:bg-gray-700">Contacto</a>
         </div>
-    </header>
 
-    <header class="hero mt-0">
-        <img class="bg" src="https://res.cloudinary.com/dysydffc7/image/upload/v1758428511/ave-logo-png_seeklogo-14303_i1y8rp.png" alt="Acarreos y Viajes Elías - Banner">
         <div class="overlay">
             <div class="max-w-4xl px-6">
                 <h1 class="text-3xl md:text-5xl font-extrabold text-white">Acarreos y Viajes Elías</h1>
@@ -76,7 +125,7 @@
     </header>
 
     <main class="max-w-6xl mx-auto px-4 py-8">
-
+        
         <section id="inicio" class="mb-8">
             <div class="bg-white p-6 rounded-xl shadow">
                 <h2 class="text-2xl font-bold text-gray-800">Bienvenido a Acarreos y Viajes Elías</h2>
@@ -110,8 +159,8 @@
                 <p class="text-gray-600 mb-4">Escanea el QR para abrir la tarjeta digital completa.</p>
                 <a id="qrAnchor" href="https://TU_SITE_NETLIFY_OR_GITHUB_PAGES/" target="_blank" rel="noopener">
                     <img id="qrImg" class="qr-img" src="https://res.cloudinary.com/dysydffc7/image/upload/v1758133407/qrcode_3_nktmcs.png"
-                         alt="QR Acarreos y Viajes Elías (escanea para abrir)"
-                         title="Escanea para abrir la tarjeta digital">
+                            alt="QR Acarreos y Viajes Elías (escanea para abrir)"
+                            title="Escanea para abrir la tarjeta digital">
                 </a>
                 <p class="mt-3 text-sm text-gray-500">Si aún no tienes la URL final, reemplaza <code>https://TU_SITE_NETLIFY_OR_GITHUB_PAGES/</code> en el código por la URL que Netlify te entregue.</p>
             </div>
@@ -195,7 +244,6 @@
     </div>
 
     <script>
-        // Mobile menu toggle
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         menuBtn.addEventListener('click', () => {
@@ -206,7 +254,6 @@
             }
         });
 
-        // Smooth scroll for internal links
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', function(e){
                 e.preventDefault();
@@ -218,14 +265,11 @@
             });
         });
 
-        // Helper: set the QR destination dynamically (useful si quieres hacerlo sin editar el HTML)
-        // Ej: setQrDestination('https://acarreos-elias.netlify.app/');
         function setQrDestination(url){
             const anchor = document.getElementById('qrAnchor');
             const img = document.getElementById('qrImg');
             if(!anchor || !img) return;
             anchor.href = url;
-            // también puedes regenerar la imagen desde api.qrserver si quieres descargarla después:
             const encoded = encodeURIComponent(url);
             img.src = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encoded}`;
         }
