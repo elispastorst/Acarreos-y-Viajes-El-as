@@ -31,12 +31,10 @@
   }
 
   /* Overlay oscuro pero detrás del contenido */
-  header.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1; /* debajo del contenido */
+  header.hero .overlay {
+  background: transparent !important;
+}
+
   }
 
   /* Contenedor principal del header */
@@ -313,6 +311,7 @@ header.hero {
     </script>
 </body>
 </html>
+
 
 
 
