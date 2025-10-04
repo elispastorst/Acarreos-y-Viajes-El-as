@@ -17,6 +17,8 @@
   /* --- MENÚ RESPONSIVO SIMPLE --- */
 <style>
   /* --- HERO CON IMAGEN --- */
+ <style>
+  /* --- HERO CON IMAGEN --- */
   header.hero {
     height: 70vh;
     min-height: 420px;
@@ -25,18 +27,25 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    color: white;
   }
 
+  /* Overlay oscuro pero detrás del contenido */
   header.hero::before {
     content: "";
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
+    z-index: 1; /* debajo del contenido */
+  }
+
+  /* Contenedor principal del header */
+  .hero-content {
+    position: relative;
+    z-index: 2; /* contenido arriba del overlay */
   }
 
   .top-nav {
-    position: relative;
-    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,10 +66,10 @@
     flex-direction: column;
     background: rgba(0, 0, 0, 0.95);
     position: absolute;
-    top: 64px; /* justo debajo de la barra */
+    top: 64px;
     left: 0;
     right: 0;
-    z-index: 20;
+    z-index: 5;
   }
   #mobileMenu a {
     padding: 0.75rem 1rem;
@@ -76,36 +85,38 @@
 </style>
 
 <header class="hero">
-  <div class="top-nav">
-    <!-- logo -->
-    <div class="flex items-center gap-3">
-      <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758428511/ave-logo-png_seeklogo-14303_i1y8rp.png"
-           alt="Logo AVE"
-           class="h-12 w-12 rounded-full border border-white shadow">
+  <div class="hero-content">
+    <div class="top-nav">
+      <!-- logo -->
+      <div class="flex items-center gap-3">
+        <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758428511/ave-logo-png_seeklogo-14303_i1y8rp.png"
+             alt="Logo AVE"
+             class="h-12 w-12 rounded-full border border-white shadow">
+      </div>
+
+      <!-- menú desktop -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#escaner">Escanéame</a>
+        <a href="#ganar-ingresos">Ganar Ingresos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <!-- botón móvil -->
+      <button id="menuBtn" class="text-white text-2xl md:hidden">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
 
-    <!-- menú desktop -->
-    <nav class="hidden md:flex space-x-6">
+    <!-- menú móvil -->
+    <div id="mobileMenu">
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="#escaner">Escanéame</a>
       <a href="#ganar-ingresos">Ganar Ingresos</a>
       <a href="#contacto">Contacto</a>
-    </nav>
-
-    <!-- botón móvil -->
-    <button id="menuBtn" class="text-white text-2xl md:hidden">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
-
-  <!-- menú móvil -->
-  <div id="mobileMenu">
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#escaner">Escanéame</a>
-    <a href="#ganar-ingresos">Ganar Ingresos</a>
-    <a href="#contacto">Contacto</a>
+    </div>
   </div>
 </header>
 
@@ -114,17 +125,17 @@
   const mobileMenu = document.getElementById('mobileMenu');
 
   menuBtn.onclick = () => {
-    mobileMenu.style.display = 
+    mobileMenu.style.display =
       mobileMenu.style.display === 'flex' ? 'none' : 'flex';
   };
 
-  // Cerrar menú al dar clic en un link
   document.querySelectorAll('#mobileMenu a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.style.display = 'none';
     });
   });
 </script>
+
 
 <script>
   // Menú móvil simple
@@ -291,6 +302,7 @@
     </script>
 </body>
 </html>
+
 
 
 
