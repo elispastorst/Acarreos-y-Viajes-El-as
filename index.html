@@ -15,6 +15,8 @@
         /* Contenedor principal del banner */
     <style>
   /* --- MENÚ RESPONSIVO SIMPLE --- */
+<style>
+  /* --- HERO CON IMAGEN --- */
   header.hero {
     height: 70vh;
     min-height: 420px;
@@ -23,9 +25,6 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   header.hero::before {
@@ -33,42 +32,36 @@
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 0;
   }
 
   .top-nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem 1.5rem;
+    position: relative;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    padding: 1rem 1.5rem;
   }
 
   nav a {
     color: white;
     font-weight: 500;
   }
-
   nav a:hover {
-    color: #facc15; /* amarillo */
+    color: #facc15;
   }
 
-  /* Móvil */
+  /* Menú móvil */
   #mobileMenu {
     display: none;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.95);
     position: absolute;
-    top: 100%;
+    top: 64px; /* justo debajo de la barra */
     left: 0;
     right: 0;
-    z-index: 50;
+    z-index: 20;
   }
-
   #mobileMenu a {
     padding: 0.75rem 1rem;
     color: white;
@@ -84,9 +77,10 @@
 
 <header class="hero">
   <div class="top-nav">
+    <!-- logo -->
     <div class="flex items-center gap-3">
       <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758428511/ave-logo-png_seeklogo-14303_i1y8rp.png"
-           alt="Acarreos y Viajes Elías - logo"
+           alt="Logo AVE"
            class="h-12 w-12 rounded-full border border-white shadow">
     </div>
 
@@ -99,7 +93,7 @@
       <a href="#contacto">Contacto</a>
     </nav>
 
-    <!-- botón menú móvil -->
+    <!-- botón móvil -->
     <button id="menuBtn" class="text-white text-2xl md:hidden">
       <i class="fa-solid fa-bars"></i>
     </button>
@@ -114,6 +108,23 @@
     <a href="#contacto">Contacto</a>
   </div>
 </header>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.onclick = () => {
+    mobileMenu.style.display = 
+      mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+  };
+
+  // Cerrar menú al dar clic en un link
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.style.display = 'none';
+    });
+  });
+</script>
 
 <script>
   // Menú móvil simple
@@ -280,6 +291,7 @@
     </script>
 </body>
 </html>
+
 
 
 
