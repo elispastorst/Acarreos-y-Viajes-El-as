@@ -56,17 +56,20 @@
             justify-content: space-between;
         }
 
-        .mobile-menu {
-            display:none;
-            position: absolute;
-            top: 72px;
-            left: 0;
-            right: 0;
-            z-index: 15;
-            background:rgba(0,0,0,0.85);
-            width: 100%;
-            flex-direction: column;
-            padding-bottom: 1rem;
+       .mobile-menu {
+    display: flex;
+    position: absolute;
+    top: 100%; /* justo debajo del top-nav */
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    z-index: 999;
+}
+
         }
 
         @media (max-width: 768px) {
@@ -101,6 +104,13 @@
     <i class="fa-solid fa-bars"></i>
 
 </button>
+            <div id="mobileMenu" class="mobile-menu hidden text-white">
+            <a href="#inicio" class="block py-2 px-4 rounded hover:bg-gray-700" >Inicio</a>
+            <a href="#servicios" class="block py-2 px-4 rounded hover:bg-gray-700" >Servicios</a>
+            <a href="#escaner" class="block py-2 px-4 rounded hover:bg-gray-700" >Escanéame</a>
+            <a href="#ganar-ingresos" class="block py-2 px-4 rounded hover:bg-gray-700" >Ganar Ingresos</a>
+            <a href="#contacto" class="block py-2 px-4 rounded hover:bg-gray-700" >Contacto</a>
+        </div>
         </div>
         
         
@@ -110,13 +120,7 @@
                 </div>
             </div>
         </div>
-        <div id="mobileMenu" class="mobile-menu hidden text-white">
-            <a href="#inicio" class="block py-2 px-4 rounded hover:bg-gray-700" >Inicio</a>
-            <a href="#servicios" class="block py-2 px-4 rounded hover:bg-gray-700" >Servicios</a>
-            <a href="#escaner" class="block py-2 px-4 rounded hover:bg-gray-700" >Escanéame</a>
-            <a href="#ganar-ingresos" class="block py-2 px-4 rounded hover:bg-gray-700" >Ganar Ingresos</a>
-            <a href="#contacto" class="block py-2 px-4 rounded hover:bg-gray-700" >Contacto</a>
-        </div>
+        
     </header>
 
     <main class="max-w-6xl mx-auto px-4 py-8">
@@ -266,6 +270,7 @@
     </script>
 </body>
 </html>
+
 
 
 
