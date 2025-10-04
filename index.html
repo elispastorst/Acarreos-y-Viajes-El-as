@@ -17,8 +17,6 @@
   /* --- MENÚ RESPONSIVO SIMPLE --- */
 <style>
   /* --- HERO CON IMAGEN --- */
- <style>
-  /* --- HERO CON IMAGEN --- */
   header.hero {
     height: 70vh;
     min-height: 420px;
@@ -27,23 +25,18 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: white;
   }
 
-  /* Overlay oscuro pero detrás del contenido */
-  header.hero .overlay {
-  background: transparent !important;
-}
-
-  }
-
-  /* Contenedor principal del header */
-  .hero-content {
-    position: relative;
-    z-index: 2; /* contenido arriba del overlay */
+  header.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
   }
 
   .top-nav {
+    position: relative;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,10 +57,10 @@
     flex-direction: column;
     background: rgba(0, 0, 0, 0.95);
     position: absolute;
-    top: 64px;
+    top: 64px; /* justo debajo de la barra */
     left: 0;
     right: 0;
-    z-index: 5;
+    z-index: 20;
   }
   #mobileMenu a {
     padding: 0.75rem 1rem;
@@ -79,53 +72,40 @@
   @media (min-width: 768px) {
     #menuBtn { display: none; }
     #mobileMenu { display: none !important; }
-  }/* ==== Portada principal ==== */
-header.hero {
-  position: relative;
-  min-height: 100vh; /* altura pantalla completa */
-  background-image: url('https://raw.githubusercontent.com/elispastorst/Acarreos-y-Viajes-El-as/f4aa376a864af175e36534c9b125703007714976/g19.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-}
-
+  }
 </style>
 
 <header class="hero">
-  <img src="https://raw.githubusercontent.com/elispastorst/Acarreos-y-Viajes-El-as/f4aa376a864af175e36534c9b125703007714976/g19.png" 
-       alt="Portada" style="width:100%; height:auto; display:block;">
   <div class="top-nav">
-    <!-- tu logo y menú -->
-  </div>
-</header>
-
-      </div>
-
-      <!-- menú desktop -->
-      <nav class="hidden md:flex space-x-6">
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#escaner">Escanéame</a>
-        <a href="#ganar-ingresos">Ganar Ingresos</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-
-      <!-- botón móvil -->
-      <button id="menuBtn" class="text-white text-2xl md:hidden">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+    <!-- logo -->
+    <div class="flex items-center gap-3">
+      <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758428511/ave-logo-png_seeklogo-14303_i1y8rp.png"
+           alt="Logo AVE"
+           class="h-12 w-12 rounded-full border border-white shadow">
     </div>
 
-    <!-- menú móvil -->
-    <div id="mobileMenu">
+    <!-- menú desktop -->
+    <nav class="hidden md:flex space-x-6">
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="#escaner">Escanéame</a>
       <a href="#ganar-ingresos">Ganar Ingresos</a>
       <a href="#contacto">Contacto</a>
-    </div>
+    </nav>
+
+    <!-- botón móvil -->
+    <button id="menuBtn" class="text-white text-2xl md:hidden">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- menú móvil -->
+  <div id="mobileMenu">
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#escaner">Escanéame</a>
+    <a href="#ganar-ingresos">Ganar Ingresos</a>
+    <a href="#contacto">Contacto</a>
   </div>
 </header>
 
@@ -134,17 +114,17 @@ header.hero {
   const mobileMenu = document.getElementById('mobileMenu');
 
   menuBtn.onclick = () => {
-    mobileMenu.style.display =
+    mobileMenu.style.display = 
       mobileMenu.style.display === 'flex' ? 'none' : 'flex';
   };
 
+  // Cerrar menú al dar clic en un link
   document.querySelectorAll('#mobileMenu a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.style.display = 'none';
     });
   });
 </script>
-
 
 <script>
   // Menú móvil simple
@@ -251,7 +231,7 @@ header.hero {
                 <p class="text-gray-600 mb-4">Cúcuta - Colombia</p>
                 <div class="flex flex-wrap justify-center gap-3">
                     <a href="https://wa.me/573204329435" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-green-600"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp 320</a>
-                    <a href="https://wa.me/573106277897" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-green-600"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp 310</a>
+                    <a href="https://wa.me/5731062777897" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-green-600"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp 310</a>
                     <a href="tel:+573204329435" class="bg-blue-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-blue-700"><i class="fa-solid fa-phone mr-2"></i> Llamar 320</a>
                     <a href="tel:+5731062777897" class="bg-blue-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-blue-700"><i class="fa-solid fa-phone mr-2"></i> Llamar 310</a>
                 </div>
@@ -311,12 +291,6 @@ header.hero {
     </script>
 </body>
 </html>
-
-
-
-
-
-
 
 
 
