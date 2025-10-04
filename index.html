@@ -13,115 +13,125 @@
         body {font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
         
         /* Contenedor principal del banner */
-        header.hero {
-            height: 70vh;
-            min-height:420px;
-            position:relative;
-            overflow:hidden;
-            /* IMAGEN DE FONDO: Camioneta grande */
-            background-image: url('https://res.cloudinary.com/dysydffc7/image/upload/v1758402601/g19_jldj6k.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        
-        header.hero .overlay {
-            position:absolute;
-            inset:0;
-            /* Capa semi-oscura para que el texto resalte */
-            background:rgba(0,0,0,0.6);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-            padding:1.5rem;
-            z-index: 10;
-        }
-        
-        header.hero .top-nav {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 20;
-            padding: 1rem;
-            max-width: 6xl;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-       .mobile-menu {
+    <style>
+  /* --- MENÚ RESPONSIVO SIMPLE --- */
+  header.hero {
+    height: 70vh;
+    min-height: 420px;
+    position: relative;
+    background-image: url('https://res.cloudinary.com/dysydffc7/image/upload/v1758402601/g19_jldj6k.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header.hero::before {
+    content: "";
     position: absolute;
-    top: 100%; /* justo debajo del top-nav */
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.9);
-    width: 100%;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+
+  nav a {
+    color: white;
+    font-weight: 500;
+  }
+
+  nav a:hover {
+    color: #facc15; /* amarillo */
+  }
+
+  /* Móvil */
+  #mobileMenu {
+    display: none;
     flex-direction: column;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    z-index: 999;
-}
+    background: rgba(0, 0, 0, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 50;
+  }
 
-        }
+  #mobileMenu a {
+    padding: 0.75rem 1rem;
+    color: white;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
 
-        @media (max-width: 768px) {
-            nav.desktop{display:none;}
-        }
+  @media (min-width: 768px) {
+    #menuBtn { display: none; }
+    #mobileMenu { display: none !important; }
+  }
+</style>
 
-        .fab {position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:12px; z-index:1000;}
-        .fab a {width:52px; height:52px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:white; box-shadow:0 6px 18px rgba(0,0,0,0.18); text-decoration:none;}
-        .fab .wh { background:#25d366; }
-        .fab .call { background:#0b84ff; }
-        .qr-img {width:260px; max-width:46vw; height:auto; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08);}
-    </style>
-</head>
-<body class="bg-gray-100 text-gray-800">
+<header class="hero">
+  <div class="top-nav">
+    <div class="flex items-center gap-3">
+      <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758428511/ave-logo-png_seeklogo-14303_i1y8rp.png"
+           alt="Acarreos y Viajes Elías - logo"
+           class="h-12 w-12 rounded-full border border-white shadow">
+    </div>
 
-    <header class="hero">
-        <div class="top-nav px-4 py-4">
-            <div class="flex items-center gap-3">
-                <!-- LOGO CORREGIDO: Se usa el logo AVE para la navegación -->
-                <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758428511/ave-logo-png_seeklogo-14303_i1y8rp.png" alt="Acarreos y Viajes Elías - logo AVE" class="h-12 w-12 rounded-full object-cover shadow-sm border border-white">
-                <div>
-                  
-                </div>
-            </div>
-<nav class="hidden md:flex space-x-6 text-white font-medium">                <a href="#inicio" class="hover:text-yellow-300">Inicio</a>
-                <a href="#servicios" class="hover:text-yellow-300">Servicios</a>
-                <a href="#escaner" class="hover:text-yellow-300">Escanéame</a>
-                <a href="#ganar-ingresos" class="hover:text-yellow-300">Ganar Ingresos</a>
-                <a href="#contacto" class="hover:text-yellow-300">Contacto</a>
-            </nav>
-       <button id="menuBtn" class="bg-white text-gray-900 py-2 rounded-xl block md:hidden absolute top-4 right-4" aria-label="Abrir Menú" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
-    <i class="fa-solid fa-bars"></i>
+    <!-- menú desktop -->
+    <nav class="hidden md:flex space-x-6">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#escaner">Escanéame</a>
+      <a href="#ganar-ingresos">Ganar Ingresos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
 
-</button>
-            <div id="mobileMenu" class="mobile-menu hidden text-white">
-            <a href="#inicio" class="block py-2 px-4 rounded hover:bg-gray-700" >Inicio</a>
-            <a href="#servicios" class="block py-2 px-4 rounded hover:bg-gray-700" >Servicios</a>
-            <a href="#escaner" class="block py-2 px-4 rounded hover:bg-gray-700" >Escanéame</a>
-            <a href="#ganar-ingresos" class="block py-2 px-4 rounded hover:bg-gray-700" >Ganar Ingresos</a>
-            <a href="#contacto" class="block py-2 px-4 rounded hover:bg-gray-700" >Contacto</a>
-        </div>
-        </div>
-        
-        
+    <!-- botón menú móvil -->
+    <button id="menuBtn" class="text-white text-2xl md:hidden">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
 
-      
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-    </header>
+  <!-- menú móvil -->
+  <div id="mobileMenu">
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#escaner">Escanéame</a>
+    <a href="#ganar-ingresos">Ganar Ingresos</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</header>
+
+<script>
+  // Menú móvil simple
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.onclick = () => {
+    const visible = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = visible ? 'none' : 'flex';
+  };
+
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.style.display = 'none';
+    });
+  });
+</script>
 
     <main class="max-w-6xl mx-auto px-4 py-8">
         
@@ -270,6 +280,7 @@
     </script>
 </body>
 </html>
+
 
 
 
