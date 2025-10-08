@@ -9,144 +9,115 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2eT0oR5S0g5KxLzK8/72V81WJ7bQ15S/K2fM7B91+K4B7k3C6RzK6Ew1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="description" content="Acarreos y Viajes Elías: Transporte confiable, rápido y seguro. Contacto por WhatsApp y teléfono. Tarjeta digital con QR." />
     <style>
-       <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body {font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+        
+        /* Contenedor principal del banner */
+        header.hero {
+            height: 70vh;
+            min-height:420px;
+            position:relative;
+            overflow:hidden;
+            /* IMAGEN DE FONDO: Camioneta grande */
+            background-image: url('https://res.cloudinary.com/dysydffc7/image/upload/v1758402601/g19_jldj6k.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        header.hero .overlay {
+            position:absolute;
+            inset:0;
+            /* Capa semi-oscura para que el texto resalte */
+            background:rgba(0,0,0,0.6);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            padding:1.5rem;
+            z-index: 10;
+        }
+        
+        header.hero .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            padding: 1rem;
+            max-width: 6xl;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-body {
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-}
+        .mobile-menu {
+            display:none;
+            position: absolute;
+            top: 72px;
+            left: 0;
+            right: 0;
+            z-index: 15;
+            background:rgba(0,0,0,0.85);
+            width: 100%;
+            flex-direction: column;
+            padding-bottom: 1rem;
+        }
 
-/* --- HERO CON IMAGEN --- */
-header.hero {
-  height: 70vh;
-  min-height: 420px;
-  position: relative;
-  background-image: url('https://raw.githubusercontent.com/elispastorst/Acarreos-y-Viajes-El-as/f4aa376a864af175e36534c9b125703007714976/g19.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+        @media (max-width: 768px) {
+            nav.desktop{display:none;}
+        }
 
-/* --- CAPA OSCURA SUPERIOR --- */
-header.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.0);
-}
+        .fab {position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:12px; z-index:1000;}
+        .fab a {width:52px; height:52px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:white; box-shadow:0 6px 18px rgba(0,0,0,0.18); text-decoration:none;}
+        .fab .wh { background:#25d366; }
+        .fab .call { background:#0b84ff; }
+        .qr-img {width:260px; max-width:46vw; height:auto; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
 
-/* --- MENÚ SUPERIOR --- */
-.top-nav {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-}
+    <header class="hero">
+        <div class="top-nav px-4 py-4">
+            <div class="flex items-center gap-3">
+                <!-- LOGO CORREGIDO: Se usa el logo AVE para la navegación -->
+                <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758428511/ave-logo-png_seeklogo-14303_i1y8rp.png" alt="Acarreos y Viajes Elías - logo AVE" class="h-12 w-12 rounded-full object-cover shadow-sm border border-white">
+                <div>
+                  
+                </div>
+            </div>
+<nav class="hidden md:flex space-x-6 text-white font-medium">                <a href="#inicio" class="hover:text-yellow-300">Inicio</a>
+                <a href="#servicios" class="hover:text-yellow-300">Servicios</a>
+                <a href="#escaner" class="hover:text-yellow-300">Escanéame</a>
+                <a href="#ganar-ingresos" class="hover:text-yellow-300">Ganar Ingresos</a>
+                <a href="#contacto" class="hover:text-yellow-300">Contacto</a>
+            </nav>
+       <button id="menuBtn" class="bg-white text-gray-900 py-2 rounded-xl block md:hidden absolute top-4 right-4" aria-label="Abrir Menú" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+    <i class="fa-solid fa-bars"></i>
 
-nav a {
-  color: white;
-  font-weight: 500;
-}
-nav a:hover {
-  color: #facc15;
-}
+</button>
+        </div>
+        
+        
 
-/* --- MENÚ MÓVIL --- */
-#mobileMenu {
-  display: none;
-  flex-direction: column;
-  background: rgba(0, 0, 0, 0.95);
-  position: absolute;
-  top: 64px;
-  left: 0;
-  right: 0;
-  z-index: 20;
-}
-#mobileMenu a {
-  padding: 0.75rem 1rem;
-  color: white;
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-@media (min-width: 768px) {
-  #menuBtn { display: none; }
-  #mobileMenu { display: none !important; }
-</style>
-
-  }
-</style>
-
-<header class="hero">
-  <div class="top-nav">
-    <!-- logo -->
-    <div class="flex items-center gap-3">
-      <img src="https://res.cloudinary.com/dysydffc7/image/upload/v1758428511/ave-logo-png_seeklogo-14303_i1y8rp.png"
-           alt="Logo AVE"
-           class="h-12 w-12 rounded-full border border-white shadow">
-    </div>
-
-    <!-- menú desktop -->
-    <nav class="hidden md:flex space-x-6">
-      <a href="#inicio">Inicio</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#escaner">Escanéame</a>
-      <a href="#ganar-ingresos">Ganar Ingresos</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-
-    <!-- botón móvil -->
-    <button id="menuBtn" class="text-white text-2xl md:hidden">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
-
-  <!-- menú móvil -->
-  <div id="mobileMenu">
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#escaner">Escanéame</a>
-    <a href="#ganar-ingresos">Ganar Ingresos</a>
-    <a href="#contacto">Contacto</a>
-  </div>
-</header>
-
-<script>
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  menuBtn.onclick = () => {
-    mobileMenu.style.display = 
-      mobileMenu.style.display === 'flex' ? 'none' : 'flex';
-  };
-
-  // Cerrar menú al dar clic en un link
-  document.querySelectorAll('#mobileMenu a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.style.display = 'none';
-    });
-  });
-</script>
-
-<script>
-  // Menú móvil simple
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  menuBtn.onclick = () => {
-    const visible = mobileMenu.style.display === 'flex';
-    mobileMenu.style.display = visible ? 'none' : 'flex';
-  };
-
-  // Cerrar menú al hacer clic en un enlace
-  document.querySelectorAll('#mobileMenu a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.style.display = 'none';
-    });
-  });
-</script>
+      
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="mobile-menu hidden text-white">
+            <a href="#inicio" class="block py-2 px-4 rounded hover:bg-gray-700" >Inicio</a>
+            <a href="#servicios" class="block py-2 px-4 rounded hover:bg-gray-700" >Servicios</a>
+            <a href="#escaner" class="block py-2 px-4 rounded hover:bg-gray-700" >Escanéame</a>
+            <a href="#ganar-ingresos" class="block py-2 px-4 rounded hover:bg-gray-700" >Ganar Ingresos</a>
+            <a href="#contacto" class="block py-2 px-4 rounded hover:bg-gray-700" >Contacto</a>
+        </div>
+    </header>
 
     <main class="max-w-6xl mx-auto px-4 py-8">
         
@@ -158,27 +129,23 @@ nav a:hover {
         </section>
 
         <!-- SECCIÓN DE MISIÓN, VISIÓN, VALORES (MVV) - Estructura corregida -->
-       <section id="mvv" class="mb-8 bg-cover bg-center relative" 
-style="background-image: url('https://github.com/elispastorst/Acarreos-y-Viajes-El-as/blob/03145e3340850575fc8ff7f7e4fbaa48eaab52cb/images.png?raw=true'); background-color: rgba(255,255,255,0.85); background-blend-mode: lighten;">
+        <section id="mvv" class="mb-8">
             <div class="bg-white p-6 rounded-xl shadow">
                 <h3 class="text-xl font-bold mb-4 text-center border-b pb-2">Misión · Visión · Valores</h3>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-  <div class="p-4 border rounded-xl shadow-sm bg-white/80">
-    <h4 class="font-semibold mb-2 text-lg text-blue-700">Misión</h4>
-    <p>Brindar un servicio de transporte confiable, rápido y seguro, adaptado a las necesidades de cada cliente, ofreciendo soluciones personalizadas para acarreos y mudanzas.</p>
-  </div>
-
-  <div class="p-4 border rounded-xl shadow-sm bg-white/80">
-    <h4 class="font-semibold mb-2 text-lg text-blue-700">Visión</h4>
-    <p>Ser reconocidos como la empresa líder en acarreos y viajes en Colombia, destacando por nuestra responsabilidad, puntualidad y atención al cliente.</p>
-  </div>
-
-  <div class="p-4 border rounded-xl shadow-sm bg-white/80">
-    <h4 class="font-semibold mb-2 text-lg text-blue-700">Valores</h4>
-    <p>Compromiso, honestidad, eficiencia y respeto son los pilares que guían cada uno de nuestros servicios.</p>
-  </div>
-</div>
-             
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div>
+                        <h4 class="font-bold text-lg text-blue-600 mb-1">Misión</h4>
+                        <p class="text-sm text-gray-600">Brindar servicios de transporte y mudanzas **seguros y puntuales**, cuidando tus bienes como si fueran nuestros.</p>
+                    </div>
+                    <div>
+                        
+                        <h4 class="font-bold text-lg text-blue-600 mb-1">Visión</h4>
+                        <p class="text-sm text-gray-600">Ser la compañía de **referencia en la región** por calidad y confianza en servicios de acarreos y viajes.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg text-blue-600 mb-1">Valores</h4>
+                        <p class="text-sm text-gray-600">**Responsabilidad** · **Puntualidad** · **Honestidad** · Trato Amable y Cordial.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -187,37 +154,21 @@ style="background-image: url('https://github.com/elispastorst/Acarreos-y-Viajes-
             <div class="bg-white p-6 rounded-xl shadow">
                 <h3 class="text-xl font-bold mb-4">Nuestros Servicios</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-
-                    
+                    <div class="p-4 border rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-semibold text-blue-600"><i class="fa-solid fa-truck-fast mr-2"></i> Acarreos Locales</h4>
+                        <p class="text-sm text-gray-600 mt-1">Traslado de muebles, enseres y mercancía pequeña dentro de la ciudad de Cúcuta.</p>
+                    </div>
+                    <div class="p-4 border rounded-xl shadow-sm hover:shadow-md transition-shadow">
                         <h4 class="font-semibold text-blue-600"><i class="fa-solid fa-box mr-2"></i> Mudanzas</h4>
                         <p class="text-sm text-gray-600 mt-1">Mudanzas residenciales y comerciales con embalaje y transporte seguro a cualquier destino.</p>
                     </div>
                     <div class="p-4 border rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                         <img src="https://github.com/elispastorst/Acarreos-y-Viajes-El-as/blob/22b2da49a59060cf576a2087fc358d4f510b343a/pngtree-moving-service-worker-truck-box-png-image_5089421.png
-       alt="Viajes y Carga"
-       class="mx-auto mb-3 w-28 h-auto">
                         <h4 class="font-semibold text-blue-600"><i class="fa-solid fa-road mr-2"></i> Viajes y Carga</h4>
                         <p class="text-sm text-gray-600 mt-1">Rutas intermunicipales, transporte de carga pesada y acarreos especiales.</p>
                     </div>
                 </div>
             </div>
-        </section>  
-        
-        <!-- Servicio 1 -->
-                   
- <div class="p-4 border rounded-xl shadow-sm hover:shadow-md transition-shadow">
-  <img src="https://github.com/elispastorst/Acarreos-y-Viajes-El-as/blob/9b9e91a9bf7ff33149220c3e5cbdb0ce74b8750f/mudanzas-super-entrega_li1.png?raw=true"
-       alt="Mudanzas"
-       class="mx-auto mb-3 w-28 h-auto">
-  <h4 class="font-semibold text-blue-600"><i class="fa-solid fa-box mr-2"></i> Mudanzas</h4>
-  <p class="text-sm text-gray-600 mt-1">Mudanzas residenciales y comerciales con embalaje y transporte seguro a cualquier destino.</p>
-</div>
-                   
- <!-- Servicio 2 -->
-  <div class="p-4 border rounded-xl shadow-sm hover:shadow-md transition-shadow">
-  
-
-      
+        </section>
 
         <section id="escaner" class="mb-8">
             <div class="bg-white p-6 rounded-xl shadow text-center">
@@ -255,9 +206,9 @@ style="background-image: url('https://github.com/elispastorst/Acarreos-y-Viajes-
                 <p class="text-gray-600 mb-4">Cúcuta - Colombia</p>
                 <div class="flex flex-wrap justify-center gap-3">
                     <a href="https://wa.me/573204329435" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-green-600"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp 320</a>
-                    <a href="https://wa.me/573106277897" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-green-600"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp 310</a>
+                    <a href="https://wa.me/5731062777897" target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-green-600"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp 310</a>
                     <a href="tel:+573204329435" class="bg-blue-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-blue-700"><i class="fa-solid fa-phone mr-2"></i> Llamar 320</a>
-                    <a href="tel:+573106277897" class="bg-blue-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-blue-700"><i class="fa-solid fa-phone mr-2"></i> Llamar 310</a>
+                    <a href="tel:+5731062777897" class="bg-blue-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-blue-700"><i class="fa-solid fa-phone mr-2"></i> Llamar 310</a>
                 </div>
             </div>
         </section>
@@ -315,21 +266,6 @@ style="background-image: url('https://github.com/elispastorst/Acarreos-y-Viajes-
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
