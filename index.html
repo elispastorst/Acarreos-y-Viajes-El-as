@@ -77,7 +77,32 @@
         .fab a {width:52px; height:52px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:white; box-shadow:0 6px 18px rgba(0,0,0,0.18); text-decoration:none;}
         .fab .wh { background:#25d366; }
         .fab .call { background:#0b84ff; }
-        .qr-img {width:260px; max-width:46vw; height:auto; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+               .qr-img {width:260px; max-width:46vw; height:auto; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+
+        /* --- MENÚ MÓVIL MEJORADO --- */
+        #mobileMenu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.95);
+            width: 100%;
+            flex-direction: column;
+            padding-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        #mobileMenu:not(.hidden) {
+            display: flex;
+        }
+
+        #menuBtn {
+            z-index: 1001;
+            position: relative;
+        }
+    </style>
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -266,6 +291,7 @@
     </script>
 </body>
 </html>
+
 
 
 
